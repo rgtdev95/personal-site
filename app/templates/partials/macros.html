@@ -1,0 +1,54 @@
+{% macro icon(name, cls="icon") -%}
+<svg class="{{ cls }}" aria-hidden="true" focusable="false"><use href="#i-{{ name }}"/></svg>
+{%- endmacro %}
+
+{% macro stub(label, href, event="book-click", small=False, external=False) -%}
+<a class="stub{% if small %} stub--small{% endif %}" href="{{ href }}" data-umami-event="{{ event }}"{% if external %} target="_blank" rel="noopener"{% endif %}>
+  <span class="stub__label">{{ label }}</span>
+  <span class="stub__tear" aria-hidden="true">{{ icon('arrow') }}</span>
+</a>
+{%- endmacro %}
+
+{% macro book_href() -%}
+{{ url_for('pages.book') }}
+{%- endmacro %}
+
+{% macro book_close(C, heading="Book a free discovery call", text="Tell me what's slowing your business down. I'll tell you honestly whether I can help.") -%}
+<section class="close" aria-labelledby="close-title">
+  <div class="rail" aria-hidden="true"></div>
+  <div class="close__inner">
+    <div class="close__copy">
+      <h2 id="close-title" class="display display--l">{{ heading }}</h2>
+      <p class="lede">{{ text }}</p>
+    </div>
+    <article class="docket docket--ticket" aria-label="Discovery call">
+      <header class="docket__bar"><span>Discovery call</span><span>Free</span></header>
+      <p class="docket__label">We'll cover</p>
+      <ul class="docket__list">
+        {% for item in C.BOOK_AGENDA %}<li>{{ icon('check') }}<span>{{ item }}</span></li>{% endfor %}
+      </ul>
+      <dl class="docket__meta">
+        <div><dt>Length</dt><dd>20 minutes</dd></div>
+        <div><dt>Format</dt><dd>Video call</dd></div>
+        <div><dt>Cost</dt><dd>Free, no obligation</dd></div>
+      </dl>
+      <div class="docket__action">
+        {{ stub("Book a free call", url_for('pages.book'), event="book-click-close") }}
+        <p class="docket__alt">Prefer email? <a class="link" href="mailto:{{ contact_email }}" data-umami-event="email-click">{{ contact_email }}</a></p>
+      </div>
+    </article>
+  </div>
+</section>
+{%- endmacro %}
+
+{% macro page_head(title, lede=None, crumb=None) -%}
+<header class="page-head">
+  <div class="rail" aria-hidden="true"></div>
+  <div class="page-head__inner">
+    {% if crumb %}<a class="crumb" href="{{ crumb[1] }}">{{ icon('arrow-left') }}{{ crumb[0] }}</a>{% endif %}
+    <h1 class="display display--xl">{{ title }}</h1>
+    {% if lede %}<p class="lede">{{ lede }}</p>{% endif %}
+    {{ caller() if caller is defined else '' }}
+  </div>
+</header>
+{%- endmacro %}

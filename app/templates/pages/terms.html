@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import page_head with context %}
+{% block title %}Terms of use · Ron Systems AI{% endblock %}
+{% block description %}The plain-English terms for using this website, and how they relate to client work.{% endblock %}
+{% block main %}
+{{ page_head("Terms of use", "The short version: use the site freely, treat the articles as general guidance, and client work runs on its own signed agreement.") }}
+<section class="block" aria-label="Terms of use">
+  <div class="wrap">
+    <div class="prose">
+      <h2>Who these terms are with</h2>
+      <p>This website is run by Ron Systems AI, the consulting business of Rolando Tactay. By using the site, you agree to these terms. Questions: <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>.</p>
+
+      <h2>Client work has its own agreement</h2>
+      <p>These terms cover this website only. Any project, check-up or support work is governed by a written services agreement and statement of work that we both sign before it starts. If the two ever disagree, the signed agreement wins.</p>
+
+      <h2>General information, not advice for your situation</h2>
+      <p>Articles, videos, examples and answers on this site are general information. They're written carefully, but they aren't advice for your particular business, and tools, prices and features change. Before you rely on something for an important decision, check it for your situation or ask me.</p>
+      <p>The examples on the site are illustrative, and client details are kept private.</p>
+
+      <h2>Using the content</h2>
+      <p>The text, design, graphics and the Ron Systems AI name and wordmark belong to Ron Systems AI. You're welcome to read, share links to, and quote short passages from the site with a link back. Please don't republish whole articles or present the content as your own without permission.</p>
+      <p>Other product names and logos shown on the site belong to their owners. They're shown to name tools I work with, not to suggest those companies endorse or work with me.</p>
+
+      <h2>Messages you send</h2>
+      <p>When you use the contact form, please don't send passwords, payment details or other sensitive data. What happens to your message is explained in the <a href="{{ url_for('pages.privacy') }}">privacy policy</a>.</p>
+
+      <h2>Links to other sites</h2>
+      <p>Some links lead to other services, such as Calendly for booking a call. Those sites have their own terms and privacy policies, and I'm not responsible for their content.</p>
+
+      <h2>Availability and liability</h2>
+      <p>I aim to keep the site accurate and available, but it's provided as it is, without guarantees that it will always be up, error-free or current. As far as the law allows, Ron Systems AI isn't liable for losses that come from using the site or relying on its general information. Nothing here limits rights you have under consumer law that can't be excluded.</p>
+
+      <h2>Governing law</h2>
+      <p>These terms are governed by the laws of the Republic of the Philippines.</p>
+
+      <h2>Changes</h2>
+      <p>If these terms change, the date below changes with them.</p>
+      <p><em>Last updated 30 September 2026.</em></p>
+    </div>
+  </div>
+</section>
+{% endblock %}

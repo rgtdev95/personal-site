@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import icon, page_head, book_close with context %}
+{% block title %}Services: automation, AI and IT systems for small business · Ron Systems AI{% endblock %}
+{% block description %}Tech check-ups and roadmaps, workflow automation, practical AI assistants and agents, software selection, systems setup, custom tools and ongoing support for small and medium businesses.{% endblock %}
+{% block main %}
+{{ page_head("Services", "From working out what you need to building and launching it. Use one service or all of them. Every project is scoped and quoted before work starts.") }}
+<section class="block" aria-label="All services">
+  <div class="wrap">
+    <ul class="service-list">
+      {% for s in C.SERVICES %}
+      <li>
+        <a href="{{ url_for('pages.service', slug=s.slug) }}">
+          <h2>{{ s.name }}{% if s.start_here %} <span class="flag">Start here</span>{% endif %}</h2>
+          <p>{{ s.short }}</p>
+          <span class="receipt__more">{{ icon('arrow') }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>
+{{ book_close(C) }}
+{% endblock %}

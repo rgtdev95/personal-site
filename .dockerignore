@@ -1,0 +1,14 @@
+.git
+.github
+.venv
+.impeccable
+.pytest_cache
+.ruff_cache
+__pycache__
+docs
+tests
+deploy
+.env
+.env.*
+*.md
+!content/**/*.md

@@ -1,0 +1,49 @@
+# Caddy (TLS + routing) and Umami analytics. Run once per VPS:
+#   docker network create web
+#   docker compose -f deploy/compose.proxy.yml --env-file deploy/.env.proxy up -d
+services:
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      TEST_USER: ${TEST_USER}
+      TEST_PASS_HASH: ${TEST_PASS_HASH}   # caddy hash-password --plaintext '...'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    networks: [web]
+
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://umami:${UMAMI_DB_PASSWORD}@umami-db:5432/umami
+      APP_SECRET: ${UMAMI_APP_SECRET}
+    depends_on: [umami-db]
+    networks: [web, umami]
+
+  umami-db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: ${UMAMI_DB_PASSWORD}
+    volumes:
+      - umami_db:/var/lib/postgresql/data
+    networks: [umami]
+
+volumes:
+  caddy_data:
+  caddy_config:
+  umami_db:
+
+networks:
+  web:
+    external: true
+  umami:

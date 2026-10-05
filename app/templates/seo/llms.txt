@@ -1,0 +1,23 @@
+# Ron Systems AI
+
+> Ron Systems AI is the IT systems, automation and AI consultancy of Rolando "Ron" Tactay, an engineer with 11+ years in IT, including four years of 24/7 production support for global financial software. It helps small and medium businesses automate manual work, adopt practical AI, and set up reliable systems. Vendor-neutral; clients own everything built. Contact: {{ contact_email }}
+
+## Services
+{% for s in C.SERVICES %}
+- [{{ s.name }}]({{ absolute('pages.service', slug=s.slug) }}): {{ s.short }}{% endfor %}
+
+## About
+- [About Ron]({{ absolute('pages.about') }}): background and way of working
+- [How it works]({{ absolute('pages.process') }}): eight stages from a free call to a documented system
+- [Recent work]({{ absolute('pages.work') }}): anonymized case studies
+- [FAQ]({{ absolute('pages.faq') }}): pricing approach, ownership, working with existing tools
+- [Book a free call]({{ absolute('pages.book') }})
+{% if resources %}
+## Guides
+{% for i in resources %}
+- [{{ i.title }}]({{ absolute('content.resource', slug=i.slug) }}): {{ i.description }}{% endfor %}
+{% endif %}{% if videos %}
+## Videos
+{% for i in videos %}
+- [{{ i.title }}]({{ absolute('content.video', slug=i.slug) }}): {{ i.description }}{% endfor %}
+{% endif %}

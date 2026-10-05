@@ -1,0 +1,63 @@
+name: Deploy
+
+# develop -> test.ronsystemsai.com, main -> ronsystemsai.com
+on:
+  push:
+    branches: [develop, main]
+
+concurrency:
+  group: deploy-${{ github.ref_name }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ github.ref_name == 'main' && 'prod' || 'test' }}
+    env:
+      ENV_NAME: ${{ github.ref_name == 'main' && 'prod' || 'test' }}
+      IMAGE: ghcr.io/${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements-dev.txt
+      - run: ruff check app tests wsgi.py
+      - run: pytest -q
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        run: |
+          TAG="${ENV_NAME}-${GITHUB_SHA::7}"
+          docker build -t "$IMAGE:$TAG" -t "$IMAGE:${ENV_NAME}-latest" .
+          docker push "$IMAGE:$TAG"
+          docker push "$IMAGE:${ENV_NAME}-latest"
+          echo "TAG=$TAG" >> "$GITHUB_ENV"
+
+      - name: Deploy on the VPS
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          envs: TAG,ENV_NAME
+          script: |
+            cd ~/ronsystemsai/deploy
+            IMAGE_TAG="$TAG" docker compose -f "compose.${ENV_NAME}.yml" pull
+            IMAGE_TAG="$TAG" docker compose -f "compose.${ENV_NAME}.yml" up -d
+            docker image prune -f
+
+      - name: Ping IndexNow (prod only)
+        if: env.ENV_NAME == 'prod' && vars.INDEXNOW_KEY != ''
+        run: curl -fsS "https://api.indexnow.org/indexnow?url=https://ronsystemsai.com/sitemap.xml&key=${{ vars.INDEXNOW_KEY }}" || true

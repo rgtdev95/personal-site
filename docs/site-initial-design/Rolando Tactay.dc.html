@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Instrument+Sans:wght@400..600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F6F8FB;--surface:#FFFFFF;--ink:#0F1A2B;--muted:#56637A;--line:#DCE3EE;--accent:#1F4BFF;--accent-ink:#1F4BFF;--accent-soft:#E6ECFF;--on-accent:#FFFFFF;--panel:#0F1A2B;--card:#FFFFFF;--card-ink:#0F1A2B;--card-muted:#56637A;--card-line:#DCE3EE;--diagram-line:#B7C2D3;--header:rgba(246,248,251,.78);--split:minmax(0,5fr) minmax(0,7fr);--hero:minmax(0,1.05fr) minmax(0,1fr);--cols3:repeat(3,minmax(0,1fr));--cols2:repeat(2,minmax(0,1fr));--book:minmax(0,1fr) minmax(0,1fr);--pos:sticky;--nav:flex;--gap:72px;--panel-pad:64px;color-scheme:light}
+:root[data-theme="dark"]{--bg:#0B1220;--surface:#121B2E;--ink:#EAF0FB;--muted:#9AA8C0;--line:#22304A;--accent:#7B97FF;--accent-ink:#7B97FF;--accent-soft:#1A2849;--on-accent:#0B1220;--panel:#16233D;--card:#121B2E;--card-ink:#EAF0FB;--card-muted:#9AA8C0;--card-line:#22304A;--diagram-line:#3A4A68;--header:rgba(11,18,32,.78);color-scheme:dark}
+@media (max-width:860px){:root{--split:minmax(0,1fr);--hero:minmax(0,1fr);--cols3:minmax(0,1fr);--cols2:minmax(0,1fr);--book:minmax(0,1fr);--pos:static;--nav:none;--gap:28px;--panel-pad:28px}}
+@keyframes rt-timer{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes rt-timer-b{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Instrument Sans',system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink);text-decoration:none}
+a:hover{text-decoration:underline}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+summary{list-style:none}
+summary::-webkit-details-marker{display:none}
+details[open] > summary > span[data-plus]{transform:rotate(45deg)}
+</style>
+</helmet>
+
+<header style="position:sticky;top:0;z-index:20;background:var(--header);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid var(--line);padding:0 24px">
+  <div style="max-width:1160px;margin:0 auto;height:66px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:19px;letter-spacing:-0.02em;color:var(--ink);text-decoration:none">Rolando Tactay</a>
+    <div style="display:flex;align-items:center;gap:28px">
+      <nav aria-label="Main" style="display:var(--nav);gap:26px;font-size:15px">
+        <a href="#services" style="color:var(--muted);text-decoration:none" style-hover="color:var(--ink)">Services</a>
+        <a href="#process" style="color:var(--muted);text-decoration:none" style-hover="color:var(--ink)">Process</a>
+        <a href="#work" style="color:var(--muted);text-decoration:none" style-hover="color:var(--ink)">Work</a>
+        <a href="#faq" style="color:var(--muted);text-decoration:none" style-hover="color:var(--ink)">FAQ</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:10px">
+        <a href="#book" style="background:var(--accent);color:var(--on-accent);border-radius:999px;padding:9px 18px;font-size:15px;font-weight:600;text-decoration:none;white-space:nowrap;transition:filter .15s" style-hover="filter:brightness(1.1)">Book a free call</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section style="padding:0 24px;background:var(--accent-soft);border-bottom:1px solid var(--line)">
+    <div style="max-width:1320px;margin:0 auto;padding:96px 0;display:grid;grid-template-columns:var(--hero);gap:var(--gap);align-items:center">
+      <div>
+        <h1 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(40px,5.6vw,68px);line-height:1.02;letter-spacing:-0.025em;margin:0;text-wrap:balance">Stop running your business on manual work.</h1>
+        <p style="margin:28px 0 0;font-size:19px;color:var(--muted);max-width:46ch;text-wrap:pretty">I'm Rolando, an engineer with 11+ years in IT. I review your systems, design what you need, and build it.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:36px">
+          <a href="#book" style="background:var(--accent);color:var(--on-accent);border-radius:999px;padding:14px 26px;font-weight:600;text-decoration:none;transition:filter .15s" style-hover="filter:brightness(1.1)">Book a free call</a>
+          <a href="#process" style="border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:13px 25px;font-weight:600;text-decoration:none;transition:border-color .15s" style-hover="border-color:var(--ink)">See how I work</a>
+        </div>
+      </div>
+
+      <figure style="margin:0;background:var(--surface);border:1px solid var(--line);border-radius:24px;overflow:hidden">
+        <div style="padding:20px 20px 8px">
+          <svg viewBox="0 0 480 400" style="width:100%;height:auto;display:block" role="img" aria-label="{{ diagramLabel }}">
+            <g>
+              <sc-for list="{{ tangle }}" as="l" hint-placeholder-count="0">
+                <line x1="{{ l.x1 }}" y1="{{ l.y1 }}" x2="{{ l.x2 }}" y2="{{ l.y2 }}" style="{{ l.style }}"></line>
+              </sc-for>
+            </g>
+            <g>
+              <sc-for list="{{ hubLines }}" as="h" hint-placeholder-count="0">
+                <line x1="{{ h.x1 }}" y1="{{ h.y1 }}" x2="240" y2="200" pathLength="1" stroke-dasharray="1" style="{{ h.style }}"></line>
+              </sc-for>
+            </g>
+            <g style="{{ hubStyle }}">
+              <circle cx="240" cy="200" r="56" style="fill:var(--accent-soft);stroke:var(--accent);stroke-width:1.5"></circle>
+              <text x="240" y="196" text-anchor="middle" style="fill:var(--ink);font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:600">One source</text>
+              <text x="240" y="213" text-anchor="middle" style="fill:var(--ink);font-family:'Instrument Sans',sans-serif;font-size:13px;font-weight:600">of truth</text>
+            </g>
+            <sc-for list="{{ nodes }}" as="n" hint-placeholder-count="0">
+              <g>
+                <rect x="{{ n.x }}" y="{{ n.y }}" width="120" height="44" rx="12" style="{{ boxStyle }}"></rect>
+                <text x="{{ n.cx }}" y="{{ n.ty }}" text-anchor="middle" style="fill:var(--ink);font-family:'Instrument Sans',sans-serif;font-size:14px;font-weight:500">{{ n.label }}</text>
+              </g>
+            </sc-for>
+          </svg>
+        </div>
+        <figcaption style="border-top:1px solid var(--line);padding:16px 20px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 20px">
+          <div role="group" aria-label="Diagram state" style="display:flex;gap:4px;padding:4px;border:1px solid var(--line);border-radius:999px">
+            <button type="button" onClick="{{ showToday }}" aria-pressed="{{ todayPressed }}" style="{{ todayBtn }}">Today</button>
+            <button type="button" onClick="{{ showPlan }}" aria-pressed="{{ planPressed }}" style="{{ planBtn }}">With a plan</button>
+          </div>
+          <p aria-live="polite" style="margin:0;font-size:15px;color:var(--muted)">
+            <sc-if value="{{ today }}" hint-placeholder-val="{{ true }}">Six tools, fifteen manual hand-offs.</sc-if>
+            <sc-if value="{{ planned }}" hint-placeholder-val="{{ false }}">Six tools, one hub, every hand-off automated.</sc-if>
+          </p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section aria-label="At a glance" style="padding:0 24px">
+    <div style="max-width:1160px;margin:0 auto;padding:44px 0;display:grid;grid-template-columns:var(--cols3);gap:28px 48px">
+      <p style="margin:0;color:var(--muted);max-width:36ch"><strong style="display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;color:var(--ink);margin-bottom:6px">11+ years in IT</strong>Including four years of 24/7 production support for global financial software.</p>
+      <p style="margin:0;color:var(--muted);max-width:36ch"><strong style="display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;color:var(--ink);margin-bottom:6px">Vendor-neutral advice</strong>I don't resell software, and you own everything I build.</p>
+      <p style="margin:0;color:var(--muted);max-width:36ch"><strong style="display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;color:var(--ink);margin-bottom:6px">Your time zone</strong>Working with clients in Australia, New Zealand, Europe, and Asia.</p>
+    </div>
+  </section>
+
+  <section id="signs" style="padding:0 24px;scroll-margin-top:66px">
+    <div style="max-width:1160px;margin:0 auto;border-top:1px solid var(--line);padding:60px 0;display:grid;grid-template-columns:var(--split);gap:var(--gap)">
+      <div style="position:var(--pos);top:110px;align-self:start">
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(30px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;margin:0;text-wrap:balance">Signs it's time to fix your systems</h2>
+        <p style="margin:16px 0 0;color:var(--muted);max-width:40ch">Most growing businesses hit this point. The tools that got you started stop keeping up.</p>
+      </div>
+      <div>
+        <div style="padding:0 0 26px"><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">Your data lives in several places.</h3><p style="margin:8px 0 0;color:var(--muted);max-width:60ch">Customer, sales, and finance information sits in different tools, and none of them agree.</p></div>
+        <div style="padding:26px 0;border-top:1px solid var(--line)"><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">Your team re-types the same information.</h3><p style="margin:8px 0 0;color:var(--muted);max-width:60ch">Copying between spreadsheets, emails, and apps eats hours every week and causes mistakes.</p></div>
+        <div style="padding:26px 0;border-top:1px solid var(--line)"><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">Your tools don't talk to each other.</h3><p style="margin:8px 0 0;color:var(--muted);max-width:60ch">You pay for software nobody chose on purpose, or that overlaps with something else you have.</p></div>
+        <div style="padding:26px 0;border-top:1px solid var(--line)"><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">One person knows how it all works.</h3><p style="margin:8px 0 0;color:var(--muted);max-width:60ch">When they're away, things slow down or break. Nothing is written down.</p></div>
+        <div style="padding:26px 0 0;border-top:1px solid var(--line)"><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">You're not sure where AI actually helps.</h3><p style="margin:8px 0 0;color:var(--muted);max-width:60ch">You keep hearing you should use it, but can't tell which uses are real and which are hype.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" style="padding:0 24px;scroll-margin-top:66px">
+    <div style="max-width:1160px;margin:0 auto;border-top:1px solid var(--line);padding:60px 0;display:grid;grid-template-columns:var(--split);gap:var(--gap)">
+      <div style="position:var(--pos);top:110px;align-self:start">
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(30px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;margin:0;text-wrap:balance">What I do</h2>
+        <p style="margin:16px 0 0;color:var(--muted);max-width:40ch">From working out what you need to building and launching it. Use one service or all of them.</p>
+      </div>
+      <div>
+        <div style="padding:0 0 26px"><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">Technology assessment and roadmap</h3><p style="margin:8px 0 0;color:var(--muted);max-width:60ch">I review your tools, workflows, and data, then give you a prioritized plan: what to fix first, what to leave alone, and what it will cost.</p></div>
+        <div style="padding:26px 0;border-top:1px solid var(--line)"><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">Systems architecture</h3><p style="margin:8px 0 0;color:var(--muted);max-width:60ch">I design how your CRM, finance, communication, data, and hosting fit together, built for security, reliability, and growth.</p></div>
+        <div style="padding:26px 0;border-top:1px solid var(--line)"><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">Tool selection</h3><p style="margin:8px 0 0;color:var(--muted);max-width:60ch">Honest advice on what to buy, build, or self-host, based on your budget and how your team really works.</p></div>
+        <div style="padding:26px 0;border-top:1px solid var(--line)"><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">Workflow automation</h3><p style="margin:8px 0 0;color:var(--muted);max-width:60ch">Repeated manual steps become automatic, using n8n, Zapier, Power Automate, Python, and scripts.</p></div>
+        <div style="padding:26px 0;border-top:1px solid var(--line)"><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">Implementation and migration</h3><p style="margin:8px 0 0;color:var(--muted);max-width:60ch">I set up, configure, and migrate applications in the cloud or on your own servers, with documentation and training for your team.</p></div>
+        <div style="padding:26px 0 0;border-top:1px solid var(--line)"><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">Practical AI</h3><p style="margin:8px 0 0;color:var(--muted);max-width:60ch">Document processing, search across your company knowledge, and assistants connected to the tools you already use. Only where it saves real time.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" style="padding:0 24px;scroll-margin-top:66px">
+    <div style="max-width:1160px;margin:0 auto;border-top:1px solid var(--line);padding:60px 0">
+      <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px 40px">
+        <div>
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(30px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;margin:0">How we work together</h2>
+          <p style="margin:16px 0 0;color:var(--muted);max-width:52ch">A clear path from first conversation to a working system, with sign-off from you at every stage.</p>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button type="button" onClick="{{ prevStep }}" aria-label="Previous stage" style="width:44px;height:44px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;cursor:pointer;transition:border-color .15s" style-hover="border-color:var(--ink)">←</button>
+          <button type="button" onClick="{{ nextStep }}" aria-label="Next stage" style="width:44px;height:44px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);font-size:18px;cursor:pointer;transition:border-color .15s" style-hover="border-color:var(--ink)">→</button>
+        </div>
+      </div>
+      <div onMouseEnter="{{ pauseAuto }}" style="margin-top:44px">
+        <div style="overflow-x:auto;padding:8px 0 4px;margin:0 -4px">
+          <ol style="list-style:none;margin:0;padding:0 4px;position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));min-width:760px">
+            <li aria-hidden="true" style="position:absolute;top:20px;left:6.25%;right:6.25%;height:2px;background:var(--line);border-radius:2px">
+              <span style="{{ fillStyle }}"></span>
+            </li>
+            <sc-for list="{{ steps }}" as="s" hint-placeholder-count="8">
+              <li style="position:relative;display:flex;justify-content:center">
+                <button type="button" onClick="{{ s.select }}" aria-current="{{ s.current }}" style="display:flex;flex-direction:column;align-items:center;gap:12px;background:none;border:0;padding:0 6px;cursor:pointer;font-family:inherit;color:inherit;transition:transform .2s ease" style-hover="transform:translateY(-3px)">
+                  <span style="{{ s.circle }}">{{ s.n }}</span>
+                  <span style="{{ s.title }}">{{ s.name }}</span>
+                </button>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+        <div style="margin-top:32px;background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:36px;display:grid;overflow:hidden">
+          <sc-for list="{{ steps }}" as="s" hint-placeholder-count="1">
+            <div aria-hidden="{{ s.hidden }}" style="{{ s.panel }}">
+              <div style="display:grid;grid-template-columns:var(--split);gap:16px var(--gap);align-items:start">
+                <div>
+                  <p style="margin:0;font-size:15px;color:var(--accent-ink);font-weight:600">Stage {{ s.n }} of 8</p>
+                  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:8px">
+                    <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(24px,2.6vw,30px);letter-spacing:-0.02em;line-height:1.15;margin:0">{{ s.name }}</h3>
+                    <sc-if value="{{ s.free }}" hint-placeholder-val="{{ false }}"><span style="background:var(--accent-soft);color:var(--accent-ink);border-radius:999px;padding:2px 12px;font-size:14px;font-weight:600">Free</span></sc-if>
+                  </div>
+                </div>
+                <p style="margin:0;font-size:18px;color:var(--muted);max-width:56ch;text-wrap:pretty">{{ s.text }}</p>
+              </div>
+            </div>
+          </sc-for>
+          <div aria-hidden="true" style="grid-area:2 / 1;margin-top:28px;height:2px;background:var(--line);border-radius:2px;overflow:hidden">
+            <span style="{{ timerStyle }}"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages" style="padding:0 24px;scroll-margin-top:66px">
+    <div style="max-width:1160px;margin:0 auto;border-top:1px solid var(--line);padding:60px 0">
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(30px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;margin:0">Ways to start</h2>
+      <p style="margin:16px 0 0;color:var(--muted);max-width:52ch">Every project is scoped and priced before work begins.</p>
+      <div style="margin-top:40px;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:grid;grid-template-columns:var(--cols3);gap:1px;background:var(--line)">
+        <div style="background:var(--accent-soft);padding:32px;display:flex;flex-direction:column;gap:14px">
+          <span style="align-self:flex-start;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:3px 12px;font-size:14px;font-weight:600">Best place to start</span>
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;letter-spacing:-0.02em;line-height:1.25;margin:0">Tech audit and roadmap</h3>
+          <p style="margin:0;color:var(--muted)">A full review of your current setup and a prioritized plan you can act on, with me or without me.</p>
+          <p style="margin:auto 0 0;padding-top:16px;border-top:1px solid var(--line);font-size:15px;font-weight:600">1–2 weeks, fixed price</p>
+        </div>
+        <div style="background:var(--surface);padding:32px;display:flex;flex-direction:column;gap:14px">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;letter-spacing:-0.02em;line-height:1.25;margin:0">Implementation project</h3>
+          <p style="margin:0;color:var(--muted)">We build the roadmap in phases: architecture, setup, automation, migration, and training.</p>
+          <p style="margin:auto 0 0;padding-top:16px;border-top:1px solid var(--line);font-size:15px;font-weight:600">Scoped and quoted up front</p>
+        </div>
+        <div style="background:var(--surface);padding:32px;display:flex;flex-direction:column;gap:14px">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;letter-spacing:-0.02em;line-height:1.25;margin:0">Monthly support</h3>
+          <p style="margin:0;color:var(--muted)">Monitoring, maintenance, and steady improvements after go-live, with a set number of hours each month.</p>
+          <p style="margin:auto 0 0;padding-top:16px;border-top:1px solid var(--line);font-size:15px;font-weight:600">Monthly, cancel anytime</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" style="padding:0 24px;scroll-margin-top:66px">
+    <div style="max-width:1160px;margin:0 auto;border-top:1px solid var(--line);padding:60px 0">
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(30px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;margin:0">Recent work</h2>
+      <p style="margin:16px 0 0;color:var(--muted);max-width:52ch">Client details are kept private. These are the problems and what was built.</p>
+      <div style="margin-top:40px">
+        <article style="display:grid;grid-template-columns:var(--split);gap:16px var(--gap);padding:32px 0;border-top:1px solid var(--line)">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;letter-spacing:-0.02em;line-height:1.25;margin:0;max-width:22ch">A CRM built around one business's daily routine</h3>
+          <dl style="margin:0;display:grid;gap:18px">
+            <div><dt style="color:var(--accent-ink);font-size:14px;font-weight:600">Problem</dt><dd style="margin:2px 0 0;max-width:60ch">Leads, payments, scheduling, and customer messages lived in separate tools.</dd></div>
+            <div><dt style="color:var(--accent-ink);font-size:14px;font-weight:600">What I built</dt><dd style="margin:2px 0 0;max-width:60ch;color:var(--muted)">A custom CRM covering lead management, payment processing, scheduling, SMS, analytics, a product catalog, and promo codes.</dd></div>
+            <div><dt style="color:var(--accent-ink);font-size:14px;font-weight:600">Result</dt><dd style="margin:2px 0 0;max-width:60ch;color:var(--muted)">The team works from one system instead of switching between several, and reports come from live data.</dd></div>
+          </dl>
+        </article>
+        <article style="display:grid;grid-template-columns:var(--split);gap:16px var(--gap);padding:32px 0;border-top:1px solid var(--line)">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;letter-spacing:-0.02em;line-height:1.25;margin:0;max-width:22ch">Business data that moves by itself</h3>
+          <dl style="margin:0;display:grid;gap:18px">
+            <div><dt style="color:var(--accent-ink);font-size:14px;font-weight:600">Problem</dt><dd style="margin:2px 0 0;max-width:60ch">Data had to be checked and copied between systems by hand.</dd></div>
+            <div><dt style="color:var(--accent-ink);font-size:14px;font-weight:600">What I built</dt><dd style="margin:2px 0 0;max-width:60ch;color:var(--muted)">Python and n8n pipelines that validate, transform, and load data into a replicated PostgreSQL database.</dd></div>
+            <div><dt style="color:var(--accent-ink);font-size:14px;font-weight:600">Result</dt><dd style="margin:2px 0 0;max-width:60ch;color:var(--muted)">Cleaner data, fewer manual steps, and a backup copy ready if the main database fails.</dd></div>
+          </dl>
+        </article>
+        <article style="display:grid;grid-template-columns:var(--split);gap:16px var(--gap);padding:32px 0 0;border-top:1px solid var(--line)">
+          <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:24px;letter-spacing:-0.02em;line-height:1.25;margin:0;max-width:22ch">An AI assistant inside the project tools</h3>
+          <dl style="margin:0;display:grid;gap:18px">
+            <div><dt style="color:var(--accent-ink);font-size:14px;font-weight:600">Problem</dt><dd style="margin:2px 0 0;max-width:60ch">Team members spent time creating, updating, and searching work items by hand.</dd></div>
+            <div><dt style="color:var(--accent-ink);font-size:14px;font-weight:600">What I built</dt><dd style="margin:2px 0 0;max-width:60ch;color:var(--muted)">A GPT-based agent connected to a project management platform, with secure sign-in, data mapping, real-time sync, and plain-language commands.</dd></div>
+            <div><dt style="color:var(--accent-ink);font-size:14px;font-weight:600">Result</dt><dd style="margin:2px 0 0;max-width:60ch;color:var(--muted)">Work items can be created and updated by describing them in everyday language.</dd></div>
+          </dl>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" style="padding:0 24px;scroll-margin-top:66px">
+    <div style="max-width:1160px;margin:0 auto;border-top:1px solid var(--line);padding:60px 0;display:grid;grid-template-columns:var(--split);gap:var(--gap)">
+      <div style="position:var(--pos);top:110px;align-self:start">
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(30px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;margin:0">Why work with me</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:var(--cols2);gap:36px 48px">
+        <div><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">Enterprise discipline at small-business scale</h3><p style="margin:8px 0 0;color:var(--muted)">Four years in a 24/7 financial software environment taught me incident management, service levels, and runbooks. You get the same care about reliability.</p></div>
+        <div><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">Plain English</h3><p style="margin:8px 0 0;color:var(--muted)">I explain options and trade-offs without jargon, so you can make the decision yourself.</p></div>
+        <div><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">You own everything</h3><p style="margin:8px 0 0;color:var(--muted)">Documentation, code, and access are handed over. No lock-in, and no dependence on me.</p></div>
+        <div><h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3;margin:0">Honest, vendor-neutral advice</h3><p style="margin:8px 0 0;color:var(--muted)">I earn nothing from the tools I recommend. Sometimes the answer is to use what you already have.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tools" style="padding:0 24px;scroll-margin-top:66px">
+    <div style="max-width:1160px;margin:0 auto;border-top:1px solid var(--line);padding:60px 0;display:grid;grid-template-columns:var(--split);gap:var(--gap)">
+      <div style="position:var(--pos);top:110px;align-self:start">
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(30px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;margin:0">Tools and platforms</h2>
+        <p style="margin:16px 0 0;color:var(--muted);max-width:40ch">I choose tools for your situation, but these are the ones I know well.</p>
+      </div>
+      <dl style="margin:0">
+        <div style="padding:0 0 22px"><dt style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em">Automation and AI</dt><dd style="margin:6px 0 0;color:var(--muted);max-width:60ch">n8n, Zapier, Microsoft Power Automate, Python, PowerShell, GPT models, retrieval-augmented generation (RAG), OCR</dd></div>
+        <div style="padding:22px 0;border-top:1px solid var(--line)"><dt style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em">Data</dt><dd style="margin:6px 0 0;color:var(--muted);max-width:60ch">PostgreSQL, Microsoft SQL Server, MySQL, Excel and VBA, ETL pipelines, database replication</dd></div>
+        <div style="padding:22px 0;border-top:1px solid var(--line)"><dt style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em">Cloud and infrastructure</dt><dd style="margin:6px 0 0;color:var(--muted);max-width:60ch">AWS, Proxmox, Linux, Windows Server, Docker, Kubernetes, Terraform, Ansible</dd></div>
+        <div style="padding:22px 0 0;border-top:1px solid var(--line)"><dt style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em">Security and operations</dt><dd style="margin:6px 0 0;color:var(--muted);max-width:60ch">Microsoft 365, Active Directory, VPN, Vaultwarden, Wazuh, GitHub Actions, monitoring with Grafana and Prometheus</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="faq" style="padding:0 24px;scroll-margin-top:66px">
+    <div style="max-width:1160px;margin:0 auto;border-top:1px solid var(--line);padding:60px 0 100px;display:grid;grid-template-columns:var(--split);gap:var(--gap)">
+      <div style="position:var(--pos);top:110px;align-self:start">
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(30px,3.6vw,40px);line-height:1.1;letter-spacing:-0.02em;margin:0">Common questions</h2>
+      </div>
+      <div style="border-bottom:1px solid var(--line)">
+        <details style="border-top:1px solid var(--line)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3">What happens on the free call?<span data-plus="" aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:999px;border:1px solid var(--line);display:grid;place-items:center;font-family:'Instrument Sans',sans-serif;font-weight:400;font-size:20px;line-height:1;transition:transform .2s ease">+</span></summary><p style="margin:0;padding:0 52px 24px 0;color:var(--muted);max-width:60ch">We talk about how your business runs, what's slowing it down, and what you'd like to change. I'll tell you honestly whether I can help and what a sensible first step looks like. There's no obligation.</p></details>
+        <details style="border-top:1px solid var(--line)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3">Do I need to be technical?<span data-plus="" aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:999px;border:1px solid var(--line);display:grid;place-items:center;font-family:'Instrument Sans',sans-serif;font-weight:400;font-size:20px;line-height:1;transition:transform .2s ease">+</span></summary><p style="margin:0;padding:0 52px 24px 0;color:var(--muted);max-width:60ch">No. I explain everything in plain language and focus on what the technology does for your business, not how it works inside.</p></details>
+        <details style="border-top:1px solid var(--line)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3">Can you work with the tools we already use?<span data-plus="" aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:999px;border:1px solid var(--line);display:grid;place-items:center;font-family:'Instrument Sans',sans-serif;font-weight:400;font-size:20px;line-height:1;transition:transform .2s ease">+</span></summary><p style="margin:0;padding:0 52px 24px 0;color:var(--muted);max-width:60ch">Yes. Often the best result comes from connecting and tidying what you have. I'll only recommend something new when it clearly pays off.</p></details>
+        <details style="border-top:1px solid var(--line)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3">How does pricing work?<span data-plus="" aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:999px;border:1px solid var(--line);display:grid;place-items:center;font-family:'Instrument Sans',sans-serif;font-weight:400;font-size:20px;line-height:1;transition:transform .2s ease">+</span></summary><p style="margin:0;padding:0 52px 24px 0;color:var(--muted);max-width:60ch">Audits and defined projects are fixed price, quoted before work starts. Ongoing support is a monthly amount for a set number of hours.</p></details>
+        <details style="border-top:1px solid var(--line)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3">Will I own what you build?<span data-plus="" aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:999px;border:1px solid var(--line);display:grid;place-items:center;font-family:'Instrument Sans',sans-serif;font-weight:400;font-size:20px;line-height:1;transition:transform .2s ease">+</span></summary><p style="margin:0;padding:0 52px 24px 0;color:var(--muted);max-width:60ch">Yes. You receive the documentation, code, and access for everything I build, so you're never locked in.</p></details>
+        <details style="border-top:1px solid var(--line)"><summary style="display:flex;justify-content:space-between;align-items:center;gap:20px;padding:20px 0;cursor:pointer;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.02em;line-height:1.3">Which time zones do you work in?<span data-plus="" aria-hidden="true" style="flex:none;width:32px;height:32px;border-radius:999px;border:1px solid var(--line);display:grid;place-items:center;font-family:'Instrument Sans',sans-serif;font-weight:400;font-size:20px;line-height:1;transition:transform .2s ease">+</span></summary><p style="margin:0;padding:0 52px 24px 0;color:var(--muted);max-width:60ch">I'm in Manila (UTC+8). That overlaps well with Australia and New Zealand. Calls with Europe usually happen in my afternoon and your morning.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section id="book" style="padding:0 24px 100px;scroll-margin-top:86px">
+    <div style="max-width:1160px;margin:0 auto;background:var(--panel);color:#EAF0FB;border-radius:28px;padding:var(--panel-pad);display:grid;grid-template-columns:var(--book);gap:48px var(--gap);align-items:start">
+      <div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(34px,4.4vw,52px);line-height:1.05;letter-spacing:-0.025em;margin:0;color:#FFFFFF;text-wrap:balance">Book a free 20-minute call</h2>
+        <p style="margin:20px 0 0;font-size:19px;color:#C5D0E3;max-width:40ch">Tell me what's slowing your business down. I'll tell you honestly whether I can help.</p>
+        <ul style="list-style:none;margin:32px 0 0;padding:0;display:grid;gap:14px">
+          <li style="display:flex;gap:14px;align-items:flex-start"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" style="flex:none;margin-top:2px"><circle cx="11" cy="11" r="10" fill="none" stroke="#7B97FF" stroke-width="1.5"></circle><polyline points="6.5,11.2 9.6,14.2 15.5,8" fill="none" stroke="#7B97FF" stroke-width="1.8"></polyline></svg>Your current tools and where they fall short</li>
+          <li style="display:flex;gap:14px;align-items:flex-start"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" style="flex:none;margin-top:2px"><circle cx="11" cy="11" r="10" fill="none" stroke="#7B97FF" stroke-width="1.5"></circle><polyline points="6.5,11.2 9.6,14.2 15.5,8" fill="none" stroke="#7B97FF" stroke-width="1.8"></polyline></svg>What you'd like to change or automate</li>
+          <li style="display:flex;gap:14px;align-items:flex-start"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" style="flex:none;margin-top:2px"><circle cx="11" cy="11" r="10" fill="none" stroke="#7B97FF" stroke-width="1.5"></circle><polyline points="6.5,11.2 9.6,14.2 15.5,8" fill="none" stroke="#7B97FF" stroke-width="1.8"></polyline></svg>Whether an audit or a project makes sense</li>
+        </ul>
+        <p style="margin:32px 0 0;padding-top:20px;border-top:1px solid rgba(234,240,251,.16);font-size:15px;color:#9AA8C0;max-width:46ch">No sales pitch and no obligation. Times are shown in your own time zone.</p>
+      </div>
+      <div>
+        <sc-if value="{{ showEmbed }}" hint-placeholder-val="{{ false }}">
+          <iframe title="Choose a time on Calendly" src="{{ calendlyUrl }}" style="width:100%;height:700px;border:0;border-radius:20px;background:#FFFFFF"></iframe>
+        </sc-if>
+        <sc-if value="{{ showCard }}" hint-placeholder-val="{{ true }}">
+          <div style="background:var(--card);color:var(--card-ink);border-radius:20px;padding:28px">
+            <h3 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:22px;letter-spacing:-0.02em;margin:0">Discovery call</h3>
+            <ul style="list-style:none;margin:18px 0 24px;padding:0;border-top:1px solid var(--card-line)">
+              <li style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--card-line)"><span style="color:var(--card-muted)">Length</span><span style="font-weight:500">20 minutes</span></li>
+              <li style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--card-line)"><span style="color:var(--card-muted)">Format</span><span style="font-weight:500">Video call</span></li>
+              <li style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--card-line)"><span style="color:var(--card-muted)">Cost</span><span style="font-weight:500">Free, no obligation</span></li>
+            </ul>
+            <a href="{{ calendlyUrl }}" target="_blank" rel="noopener" style="display:block;text-align:center;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:15px 24px;font-weight:600;text-decoration:none;transition:filter .15s" style-hover="filter:brightness(1.1)">Choose a time on Calendly</a>
+          </div>
+        </sc-if>
+        <p style="margin:18px 0 0;font-size:15px;color:#C5D0E3;text-align:center">Prefer email? <a href="mailto:rgtprofessional95@gmail.com" style="color:#FFFFFF;text-decoration:underline;text-underline-offset:3px">Send me a message.</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer style="padding:0 24px">
+  <div style="max-width:1160px;margin:0 auto;border-top:1px solid var(--line);padding:28px 0 40px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;font-size:15px;color:var(--muted)">
+    <span>© 2026 Rolando Tactay</span>
+    <a href="mailto:rgtprofessional95@gmail.com">rgtprofessional95@gmail.com</a>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;auto&quot;,&quot;light&quot;,&quot;dark&quot;],&quot;default&quot;:&quot;light&quot;,&quot;tsType&quot;:&quot;'auto'|'light'|'dark'&quot;},&quot;diagramAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;processAutoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;calendlyUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://calendly.com/&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;embedCalendly&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { planned: false, reduced: false, theme: null, step: 0, auto: true, tick: 0 };
+  STEPS = [
+    ['Discovery call', "A 20 to 30 minute conversation about your business, your pain points, and your goals. You'll know if I'm a fit, and I'll know if I can help.", true],
+    ['Assessment', 'I review your current tools, workflows, and data, and talk to the people who use them every day.'],
+    ['Roadmap and proposal', 'You get a clear plan with priorities, options, timeline, and fixed pricing, so there are no surprises.'],
+    ['Architecture and design', 'I design the solution and choose the tools with you. Nothing gets built until you approve the design.'],
+    ['Implementation', 'I build, configure, migrate, and automate in phases, with regular check-ins. Quick wins come first.'],
+    ['Testing and training', 'We test everything with your team, and I provide documentation and walkthroughs.'],
+    ['Go-live and handover', 'A smooth launch, followed by a full handover of documentation and access. Everything belongs to you.'],
+    ['Support and improvement', 'Optional monthly support for monitoring, maintenance, and continuous improvement.']
+  ];
+  componentDidMount() {
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) this.setState({ planned: true, reduced: true, auto: false });
+    else {
+      if (this.props.diagramAutoplay !== false) this.t = setTimeout(() => this.setState({ planned: true }), 1500);
+      if (this.props.processAutoplay !== false) this.iv = setInterval(() => this.setState(s => s.auto ? { step: (s.step + 1) % 8, tick: s.tick + 1 } : null), 4000);
+      else this.setState({ auto: false });
+    }
+    this.applyTheme();
+  }
+  componentDidUpdate() { this.applyTheme(); }
+  componentWillUnmount() { clearTimeout(this.t); clearInterval(this.iv); }
+  goStep(i) { clearInterval(this.iv); this.setState({ step: (i + 8) % 8, auto: false }); }
+  effTheme() {
+    const t = this.state.theme || this.props.theme || 'light';
+    if (t === 'auto') return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return t;
+  }
+  applyTheme() { document.documentElement.dataset.theme = this.effTheme(); }
+  renderVals() {
+    const { planned, reduced } = this.state;
+    const labels = ['Website', 'CRM', 'Accounting', 'Email', 'Spreadsheets', 'Support chat'];
+    const nodes = labels.map((label, i) => {
+      const a = (-90 + 60 * i) * Math.PI / 180;
+      const cx = Math.round(240 + 156 * Math.cos(a)), cy = Math.round(200 + 140 * Math.sin(a));
+      return { label, cx, cy, x: cx - 60, y: cy - 22, ty: cy + 5 };
+    });
+    const tr = (v) => reduced ? 'none' : v;
+    const tangle = [];
+    for (let i = 0; i < 6; i++) for (let j = i + 1; j < 6; j++) tangle.push({
+      x1: nodes[i].cx, y1: nodes[i].cy, x2: nodes[j].cx, y2: nodes[j].cy,
+      style: { stroke: 'var(--diagram-line)', strokeWidth: 1.25, opacity: planned ? 0 : 1, transition: tr('opacity .6s ease') }
+    });
+    const hubLines = nodes.map((n, i) => ({
+      x1: n.cx, y1: n.cy,
+      style: { stroke: 'var(--accent)', strokeWidth: 2, strokeDashoffset: planned ? 0 : 1, transition: tr(planned ? `stroke-dashoffset .8s ease ${0.35 + i * 0.08}s` : 'stroke-dashoffset .4s ease') }
+    }));
+    const btn = (on) => ({ border: 0, borderRadius: 999, padding: '7px 16px', fontFamily: 'inherit', fontSize: 15, fontWeight: 600, cursor: 'pointer', background: on ? 'var(--accent)' : 'transparent', color: on ? 'var(--on-accent)' : 'var(--muted)', transition: 'background .2s, color .2s' });
+    const url = this.props.calendlyUrl || 'https://calendly.com/';
+    const embed = !!this.props.embedCalendly;
+    const dark = this.effTheme() === 'dark';
+    const { step, auto, tick } = this.state;
+    const ease = 'cubic-bezier(.2,.7,.2,1)';
+    const steps = this.STEPS.map(([name, text, free], i) => {
+      const done = i <= step, on = i === step;
+      return {
+        name, text, free: !!free, n: i + 1, current: on ? 'step' : undefined, hidden: on ? undefined : 'true',
+        select: () => this.goStep(i),
+        circle: { width: 40, height: 40, borderRadius: 999, display: 'grid', placeItems: 'center', fontWeight: 600, fontSize: 15, position: 'relative', zIndex: 1,
+          border: '1px solid ' + (done ? 'var(--accent)' : 'var(--line)'), background: done ? 'var(--accent)' : 'var(--surface)', color: done ? 'var(--on-accent)' : 'var(--ink)',
+          boxShadow: on ? '0 0 0 7px var(--accent-soft)' : '0 0 0 0 var(--accent-soft)', transform: on ? 'scale(1.1)' : 'scale(1)',
+          transition: tr(`background .4s ${ease}, color .4s, border-color .4s, box-shadow .45s ${ease}, transform .45s ${ease}`) },
+        title: { fontSize: 15, fontWeight: 600, lineHeight: 1.3, textAlign: 'center', textWrap: 'balance', color: on ? 'var(--ink)' : 'var(--muted)', transition: tr('color .3s') },
+        panel: { gridArea: '1 / 1', opacity: on ? 1 : 0, transform: on ? 'translateY(0)' : 'translateY(10px)', visibility: on ? 'visible' : 'hidden', pointerEvents: on ? 'auto' : 'none',
+          transition: tr(on ? `opacity .45s ${ease} .1s, transform .45s ${ease} .1s, visibility 0s` : `opacity .25s, transform .25s, visibility 0s linear .25s`) }
+      };
+    });
+    const fillStyle = { position: 'absolute', left: 0, top: 0, bottom: 0, borderRadius: 2, background: 'var(--accent)', width: (step / 7 * 100) + '%', transition: tr(`width .6s ${ease}`) };
+    const timerStyle = auto && !reduced
+      ? { display: 'block', height: '100%', background: 'var(--accent)', width: '100%', transformOrigin: 'left', animation: `rt-timer 4s linear`, animationName: tick % 2 ? 'rt-timer-b' : 'rt-timer' }
+      : { display: 'block', height: '100%', width: 0 };
+    return {
+      steps, fillStyle, timerStyle,
+      prevStep: () => this.goStep(step - 1), nextStep: () => this.goStep(step + 1),
+      pauseAuto: () => { if (this.state.auto) { clearInterval(this.iv); this.setState({ auto: false }); } },
+      nodes, tangle, hubLines, planned, today: !planned,
+      hubStyle: { opacity: planned ? 1 : 0, transition: tr(planned ? 'opacity .5s ease .25s' : 'opacity .3s ease') },
+      boxStyle: { fill: 'var(--surface)', stroke: planned ? 'var(--accent)' : 'var(--diagram-line)', strokeWidth: 1.5, transition: tr('stroke .5s ease .3s') },
+      diagramLabel: planned ? 'Six tools connected through one central hub, one source of truth.' : 'Six tools, each tangled to every other with fifteen manual hand-offs.',
+      showToday: () => { clearTimeout(this.t); this.setState({ planned: false }); },
+      showPlan: () => { clearTimeout(this.t); this.setState({ planned: true }); },
+      todayPressed: String(!planned), planPressed: String(planned),
+      todayBtn: btn(!planned), planBtn: btn(planned),
+      toggleTheme: () => this.setState({ theme: dark ? 'light' : 'dark' }),
+      themeLabel: dark ? 'Switch to light theme' : 'Switch to dark theme',
+      calendlyUrl: url, showEmbed: embed, showCard: !embed,
+      showPhoto: this.props.showPhoto !== false
+    };
+  }
+}
+</script>
+</body>
+</html>

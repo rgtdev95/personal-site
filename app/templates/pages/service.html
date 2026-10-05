@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import icon, page_head, book_close with context %}
+{% block title %}{{ s.name }} for small business · Ron Systems AI{% endblock %}
+{% block description %}{{ s.short }}{% endblock %}
+{% block main %}
+{% call page_head(s.title, None, ("All services", url_for('pages.services'))) %}
+<p class="answer">{{ s.answer }}</p>
+{% endcall %}
+
+<section class="block" aria-labelledby="signs">
+  <div class="wrap two-col">
+    <h2 id="signs" class="display display--m">Signs you need this</h2>
+    <ul class="checklist">
+      {% for item in s.signs %}<li>{{ icon('check') }}<span>{{ item }}</span></li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+<section class="block block--alt" aria-labelledby="steps">
+  <div class="wrap two-col">
+    <h2 id="steps" class="display display--m">What I do</h2>
+    <ol class="steps">
+      {% for item in s.steps %}<li><span>{{ item }}</span></li>{% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="block" aria-labelledby="details">
+  <div class="wrap two-col">
+    <h2 id="details" class="display display--m">Tools and format</h2>
+    <div>
+      <div class="meta-line"><span>Tools</span><p>{{ s.tools }}</p></div>
+      <div class="meta-line"><span>Format</span><p>{{ s.format }}</p></div>
+    </div>
+  </div>
+</section>
+
+{% if s.faqs %}
+<section class="block block--alt" aria-labelledby="questions">
+  <div class="wrap two-col">
+    <h2 id="questions" class="display display--m">Questions</h2>
+    <div class="faq__list">
+      {% for q, a in s.faqs %}
+      <details class="qa" {% if loop.first %}open{% endif %}>
+        <summary><span>{{ q }}</span>{{ icon('plus', 'icon qa__icon') }}</summary>
+        <p>{{ a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="block" aria-labelledby="more">
+  <div class="wrap two-col">
+    <h2 id="more" class="display display--m">Other services</h2>
+    <ul class="more-list">
+      {% for o in others %}<li><a href="{{ url_for('pages.service', slug=o.slug) }}"><span>{{ o.name }}</span>{{ icon('arrow') }}</a></li>{% endfor %}
+    </ul>
+  </div>
+</section>
+
+{{ book_close(C) }}
+{% endblock %}
