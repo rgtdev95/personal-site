@@ -1,0 +1,27 @@
+# Private source material (resume includes personal contact details)
+docs/about-ron/
+
+# Secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Design review captures
+.impeccable/review/

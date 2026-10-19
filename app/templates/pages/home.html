@@ -1,0 +1,196 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import icon, stub, book_close with context %}
+{% block title %}Ron Systems AI: stop running your business on manual work{% endblock %}
+{% block body_class %}page-home{% endblock %}
+{% block main %}
+
+<section class="hero" data-hero aria-labelledby="hero-title">
+  <div class="rail rail--hero" aria-hidden="true"></div>
+  <div class="hero__grid">
+    <div class="hero__copy">
+      <h1 id="hero-title" class="display display--xl">{{ C.HERO.title }}</h1>
+      <p class="lede">{{ C.HERO.lede }}</p>
+      <div class="actions">
+        {{ stub("Book a free call", url_for('pages.book'), event="book-click-hero") }}
+        <a class="link link--quiet" href="#how">See how it works {{ icon('arrow') }}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% include "partials/tool-logos.svg" %}
+<section class="tools-strip" aria-labelledby="tools-strip-title">
+  <div class="tools-strip__inner">
+    <h2 id="tools-strip-title" class="tools-strip__title">Works with the tools you already use</h2>
+    <div class="marquee">
+      <div class="marquee__track">
+        {% for copy in range(2) %}
+        <ul class="marquee__group"{% if copy %} aria-hidden="true"{% endif %}>
+          {% for slug, name in C.TOOL_LOGOS %}
+          <li class="marquee__item"><svg class="marquee__mark" aria-hidden="true" focusable="false"><use href="#t-{{ slug }}"/></svg><span>{{ name }}</span></li>
+          {% endfor %}
+        </ul>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signs" aria-labelledby="signs-title">
+  <div class="wrap signs__grid">
+    <div class="signs__intro">
+      <h2 id="signs-title" class="display display--l">Signs your tools have stopped keeping up</h2>
+      <p>Most growing businesses hit this point. The tools that got you started stop keeping up, and the work falls back on people.</p>
+    </div>
+    <div class="spike" role="list">
+      <span class="spike__rod" aria-hidden="true"></span>
+      {% for head, text in C.SIGNS %}
+      <div class="slip" role="listitem">
+        <h3 class="slip__head">{{ head }}</h3>
+        <p>{{ text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services" aria-labelledby="services-title">
+  <div class="wrap services__grid">
+    <div class="services__intro">
+      <h2 id="services-title" class="display display--l">What I do</h2>
+      <p>From working out what you need to building and launching it. Use one service or all of them.</p>
+      <a class="link" href="{{ url_for('pages.services') }}">All services in detail {{ icon('arrow') }}</a>
+    </div>
+    <div class="receipt">
+      <div class="receipt__head">
+        <span class="receipt__brand">Ron Systems AI</span>
+        <span>Services</span>
+      </div>
+      <ol class="receipt__items">
+        {% for s in C.SERVICES %}
+        <li class="receipt__item{% if s.start_here %} is-featured{% endif %}">
+          <a href="{{ url_for('pages.service', slug=s.slug) }}">
+            <span class="receipt__name">{{ s.name }}{% if s.start_here %} <span class="flag">Start here</span>{% endif %}</span>
+            <span class="receipt__desc">{{ s.short }}</span>
+            <span class="receipt__more">{{ icon('arrow') }}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ol>
+      <div class="receipt__total">
+        <span>Every project</span>
+        <span>Scoped and quoted before work starts</span>
+      </div>
+      <p class="receipt__foot">You own everything I build.</p>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="how" aria-labelledby="how-title" data-process>
+  <div class="wrap process__head">
+    <h2 id="how-title" class="display display--l">How we work together</h2>
+    <p>A clear path from first conversation to a working system, with your sign-off at every stage.</p>
+    <div class="process__controls">
+      <button class="icon-btn" type="button" data-prev aria-label="Previous stage">{{ icon('arrow-left') }}</button>
+      <button class="icon-btn" type="button" data-next aria-label="Next stage">{{ icon('arrow') }}</button>
+    </div>
+  </div>
+  <div class="process__track">
+    <div class="rail rail--process" aria-hidden="true"></div>
+    <ol class="process__list" data-track tabindex="0" aria-label="Eight stages, scroll sideways">
+      {% for name, text, free in C.PROCESS %}
+      <li class="docket docket--stage">
+        <span class="docket__clip" aria-hidden="true"></span>
+        <div class="docket__bar"><span>Stage {{ loop.index }} of {{ C.PROCESS | length }}</span>{% if free %}<span class="docket__free">Free</span>{% endif %}</div>
+        <h3 class="docket__title">{{ name }}</h3>
+        <p>{{ text }}</p>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+
+<section class="start" aria-labelledby="start-title">
+  <div class="wrap">
+    <h2 id="start-title" class="display display--l">Ways to start</h2>
+    <p class="section-lede">Every project is scoped and quoted before work begins.</p>
+    <div class="order-types">
+      {% for w in C.WAYS_TO_START %}
+      <div class="order-type{% if w.featured %} is-featured{% endif %}">
+        <h3 class="order-type__name">{{ w.name }}{% if w.featured %} <span class="flag">Best place to start</span>{% endif %}</h3>
+        <p>{{ w.text }}</p>
+        <p class="order-type__format">{{ w.format }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="work" aria-labelledby="work-title">
+  <div class="wrap">
+    <div class="work__head">
+      <h2 id="work-title" class="display display--l">Recent work</h2>
+      <p>Client details are kept private. These are the problems and what was built.</p>
+    </div>
+    <div class="jobs">
+      {% for c in C.CASES %}
+      <article class="job" id="{{ c.slug }}">
+        <header class="job__side">
+          <h3 class="job__title">{{ c.title }}</h3>
+          <span class="job__tag">{{ c.tag }}</span>
+        </header>
+        <dl class="job__body">
+          <div><dt>Problem</dt><dd>{{ c.problem }}</dd></div>
+          <div><dt>What I built</dt><dd>{{ c.built }}</dd></div>
+          <div class="job__result"><dt>Result</dt><dd>{{ c.result }}</dd></div>
+        </dl>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="why" aria-labelledby="why-title">
+  <div class="wrap why__grid">
+    <h2 id="why-title" class="display display--l">Why work with me</h2>
+    <dl class="why__list">
+      {% for head, text in C.WHY %}
+      <div><dt>{{ head }}</dt><dd>{{ text }}</dd></div>
+      {% endfor %}
+    </dl>
+  </div>
+</section>
+
+<section class="tools" aria-labelledby="tools-title">
+  <div class="wrap tools__grid">
+    <div>
+      <h2 id="tools-title" class="display display--m">Tools and platforms</h2>
+      <p>I choose tools for your situation, but these are the ones I know well.</p>
+    </div>
+    <dl class="tools__list">
+      {% for head, text in C.TOOLS %}
+      <div><dt>{{ head }}</dt><dd>{{ text }}</dd></div>
+      {% endfor %}
+    </dl>
+  </div>
+</section>
+
+<section class="faq" aria-labelledby="faq-title">
+  <div class="wrap faq__grid">
+    <div>
+      <h2 id="faq-title" class="display display--l">Common questions</h2>
+      <p><a class="link" href="{{ url_for('pages.faq') }}">All questions {{ icon('arrow') }}</a></p>
+    </div>
+    <div class="faq__list">
+      {% for q, a in C.FAQS %}
+      <details class="qa">
+        <summary><span>{{ q }}</span>{{ icon('plus', 'icon qa__icon') }}</summary>
+        <p>{{ a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{{ book_close(C) }}
+{% endblock %}

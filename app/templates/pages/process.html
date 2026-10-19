@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import icon, page_head, book_close with context %}
+{% block title %}How it works: from first call to a working system · Ron Systems AI{% endblock %}
+{% block description %}Eight clear stages from a free discovery call to a working, documented system you own, with your sign-off at every stage.{% endblock %}
+{% block main %}
+{{ page_head("How we work together", "A clear path from first conversation to a working system, with your sign-off at every stage. Nothing gets built until you approve the design.") }}
+<section class="block" aria-label="The eight stages">
+  <div class="wrap">
+    <ol class="steps steps--process">
+      {% for name, text, free in C.PROCESS %}
+      <li>
+        <div>
+          <h2 class="display display--m">{{ name }}{% if free %} <span class="flag">Free</span>{% endif %}</h2>
+          <p class="section-lede">{{ text }}</p>
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </div>
+</section>
+<section class="block block--alt" aria-labelledby="start-title">
+  <div class="wrap">
+    <h2 id="start-title" class="display display--l">Ways to start</h2>
+    <div class="order-types">
+      {% for w in C.WAYS_TO_START %}
+      <div class="order-type{% if w.featured %} is-featured{% endif %}">
+        <h3 class="order-type__name">{{ w.name }}{% if w.featured %} <span class="flag">Best place to start</span>{% endif %}</h3>
+        <p>{{ w.text }}</p>
+        <p class="order-type__format">{{ w.format }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{{ book_close(C) }}
+{% endblock %}
