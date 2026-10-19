@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import icon, page_head, book_close with context %}
+{% block title %}Questions about working with Ron Systems AI{% endblock %}
+{% block description %}Answers about the free discovery call, pricing, owning what's built, working with your existing tools, and working remotely.{% endblock %}
+{% block main %}
+{{ page_head("Common questions") }}
+<section class="block" aria-label="Questions and answers">
+  <div class="wrap two-col">
+    <div></div>
+    <div class="faq__list">
+      {% for q, a in C.FAQS %}
+      <details class="qa" open>
+        <summary><span>{{ q }}</span>{{ icon('plus', 'icon qa__icon') }}</summary>
+        <p>{{ a }}</p>
+      </details>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{{ book_close(C, "Still have a question?", "Ask it on a free 20-minute call, or send me an email.") }}
+{% endblock %}

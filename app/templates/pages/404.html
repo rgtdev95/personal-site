@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import icon with context %}
+{% block title %}Page not found · Ron Systems AI{% endblock %}
+{% block main %}
+<section class="not-found">
+  <div class="rail" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="docket">
+      <span class="docket__clip" aria-hidden="true"></span>
+      <div class="docket__bar"><span>Error 404</span><span>Not found</span></div>
+      <ul class="docket__lines">
+        <li><span>Page you asked for</span><span>Missing</span></li>
+        <li><span>Most likely cause</span><span>Old or mistyped link</span></li>
+      </ul>
+    </div>
+    <h1 class="display display--l not-found__title">This page isn't on the rail.</h1>
+    <p class="section-lede"><a class="link" href="{{ url_for('pages.home') }}">Go to the homepage {{ icon('arrow') }}</a></p>
+  </div>
+</section>
+{% endblock %}

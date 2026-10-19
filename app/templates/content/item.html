@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% from "partials/macros.html" import page_head, book_close with context %}
+{% block title %}{{ item.title }} · Ron Systems AI{% endblock %}
+{% block description %}{{ item.description }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block main %}
+{% call page_head(item.title, item.description, (meta.title, url_for(meta.list))) %}
+<p class="byline">By Rolando “Ron” Tactay · <time datetime="{{ item.published }}">{{ item.published }}</time>{% if item.updated and item.updated != item.published %} · Updated <time datetime="{{ item.updated }}">{{ item.updated }}</time>{% endif %}</p>
+{% endcall %}
+<section class="block" aria-label="Article">
+  <div class="wrap">
+    {% if item.youtube_id %}
+    <iframe class="video-frame" src="https://www.youtube-nocookie.com/embed/{{ item.youtube_id }}" title="{{ item.title }}" loading="lazy" allowfullscreen></iframe>
+    {% endif %}
+    <div class="prose">{{ item.html | safe }}</div>
+  </div>
+</section>
+{{ book_close(C) }}
+{% endblock %}
